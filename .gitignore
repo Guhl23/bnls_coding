@@ -1,3 +1,6 @@
-/bnls_coding/nbproject/private/
+/nbproject/
 /build/
 /dist/
+/libraries/nblibraries.properties
+build.xml
+manifest.mf
