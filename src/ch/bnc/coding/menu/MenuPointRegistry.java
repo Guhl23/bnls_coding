@@ -40,6 +40,10 @@ public class MenuPointRegistry {
             throw new MenuPointNotFoundException(id);
         }
     }
+    
+    public Map<String, MenuPoint> getFunctions() {
+        return menuPoints;
+    }
 
     private static class MenuPointNotFoundException extends Exception {
 

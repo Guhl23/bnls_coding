@@ -29,7 +29,7 @@ public class FunctionModule extends AbstractModule {
     protected void configure() {
         MapBinder<String, TransformFunction> functionBinder = MapBinder.newMapBinder(binder(), String.class, TransformFunction.class);
         functionBinder.addBinding("leet").to(LeetFunction.class);
-        bind(FunctionRegistry.class).to(FunctionRegistry.class);
+        bind(FunctionRegistry.class).asEagerSingleton();
     }
 
 }

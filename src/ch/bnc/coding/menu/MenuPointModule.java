@@ -30,7 +30,7 @@ public class MenuPointModule extends AbstractModule {
     protected void configure() {
         MapBinder<String, MenuPoint> functionBinder = MapBinder.newMapBinder(binder(), String.class, MenuPoint.class);
         functionBinder.addBinding("transform").to(TransformMenuPoint.class);
-        bind(MenuPointRegistry.class).to(MenuPointRegistry.class);
+        bind(MenuPointRegistry.class).asEagerSingleton();
     }
 
 }

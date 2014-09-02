@@ -17,7 +17,10 @@
 
 package ch.bnc.coding.menu;
 
+import com.google.common.collect.ImmutableList;
 import com.google.inject.Inject;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -29,6 +32,18 @@ public class Menu {
     @Inject
     public Menu(MenuPointRegistry menuRegistry) {
         this.menuRegistry = menuRegistry;
+    }
+
+    public void listOptions() {
+        for (Map.Entry<String, MenuPoint> menuPointEntry : menuRegistry.getFunctions().entrySet()) {
+            MenuPoint menuPoint = menuPointEntry.getValue();
+            Object[] functionValues = {
+                    menuPointEntry.getKey(),
+                    menuPoint.getLabel(),
+                    menuPoint.getDescription()
+            };
+            System.out.println(String.format("%s -> %s: %s", functionValues));
+        }
     }
 
 }

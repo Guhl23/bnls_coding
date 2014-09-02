@@ -33,11 +33,10 @@ public class BNLS {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Injector menuInjector = Guice.createInjector(new MenuPointModule());
-        Injector functionsInjector = Guice.createInjector(new FunctionModule());
+        Injector injector = Guice.createInjector(new MenuPointModule(), new FunctionModule());
         
-        Menu menu = menuInjector.getInstance(Menu.class);
-        
+        Menu menu = injector.getInstance(Menu.class);
+        menu.listOptions();
     }
 
 }

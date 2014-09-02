@@ -23,4 +23,6 @@ package ch.bnc.coding.menu;
  */
 public interface MenuPoint {
     String run(String... arguments);
+    String getLabel();
+    String getDescription();
 }
