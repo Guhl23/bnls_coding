@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ch.bnc.coding.transformfunctions;
+package ch.bnc.coding.functions;
 
 import com.google.inject.Inject;
 import java.util.Map;
@@ -39,7 +39,11 @@ public class FunctionRegistry {
         }
     }
 
-    private static class FunctionNotFoundException extends Exception {
+    public Map<String, TransformFunction> getTransformFunctions() {
+        return functions;
+    }
+
+    public static class FunctionNotFoundException extends Exception {
 
         public FunctionNotFoundException(String id) {
             super(String.format("Function with id '%s' is not registered!", id));

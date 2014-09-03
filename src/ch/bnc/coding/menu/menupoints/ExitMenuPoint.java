@@ -15,12 +15,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ch.bnc.coding.transformfunctions;
+package ch.bnc.coding.menu.menupoints;
+
+import ch.bnc.coding.menu.MenuPoint;
+import java.util.List;
 
 /**
  *
  * @author Luca Neukom <luca.neukom@gmail.com>
  */
-public interface TransformFunction {
-    String transfer(String value);
+public class ExitMenuPoint implements MenuPoint {
+
+    @Override
+    public String run(List<String> arguments) {
+        System.exit(0);
+        return "";
+    }
+
+    @Override
+    public String getLabel() {
+        return "Schliessen";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Das Programm schliessen";
+    }
+
 }

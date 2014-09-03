@@ -33,7 +33,7 @@ public class MenuPointRegistry {
         this.menuPoints = functions;
     }
 
-    public MenuPoint getFunction(String id) throws MenuPointNotFoundException {
+    public MenuPoint getMenuPoint(String id) throws MenuPointNotFoundException {
         if (menuPoints.containsKey(id)) {
             return menuPoints.get(id);
         } else {
@@ -41,11 +41,11 @@ public class MenuPointRegistry {
         }
     }
     
-    public Map<String, MenuPoint> getFunctions() {
+    public Map<String, MenuPoint> getMenuPoints() {
         return menuPoints;
     }
 
-    private static class MenuPointNotFoundException extends Exception {
+    public static class MenuPointNotFoundException extends Exception {
 
         public MenuPointNotFoundException(String id) {
             super(String.format("Menu point with id '%s' is not registered!", id));

@@ -17,10 +17,8 @@
 
 package ch.bnc.coding.menu;
 
-import com.google.common.collect.ImmutableList;
 import com.google.inject.Inject;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -35,14 +33,27 @@ public class Menu {
     }
 
     public void listOptions() {
-        for (Map.Entry<String, MenuPoint> menuPointEntry : menuRegistry.getFunctions().entrySet()) {
+        menuRegistry.getMenuPoints().entrySet().stream().map((menuPointEntry) -> {
             MenuPoint menuPoint = menuPointEntry.getValue();
             Object[] functionValues = {
-                    menuPointEntry.getKey(),
-                    menuPoint.getLabel(),
-                    menuPoint.getDescription()
+                menuPointEntry.getKey(),
+                menuPoint.getLabel(),
+                menuPoint.getDescription()
             };
-            System.out.println(String.format("%s -> %s: %s", functionValues));
+            return functionValues;
+        }).forEach((functionValues) -> {
+            System.out.println(String.format("%s\n--- %s: %s", functionValues));
+        });
+    }
+    
+    public void runMenu(String id, List<String> arguments) {
+        try {
+            MenuPoint menuPoint = menuRegistry.getMenuPoint(id);
+            System.out.println(menuPoint.run(arguments));
+        } catch (MenuPointRegistry.MenuPointNotFoundException
+                | MenuPoint.MenuException
+                | MenuPoint.ArgumentsException e) {
+            System.out.println(e.getMessage());
         }
     }
 

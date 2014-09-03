@@ -15,21 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ch.bnc.coding.transformfunctions;
+package ch.bnc.coding.functions;
 
 /**
  *
  * @author Luca Neukom <luca.neukom@gmail.com>
  */
-import com.google.inject.AbstractModule;
-import com.google.inject.multibindings.MapBinder;
-public class FunctionModule extends AbstractModule {
+public interface TransformFunction {
+    String transfer(String value) throws FunctionException;
 
-    @Override
-    protected void configure() {
-        MapBinder<String, TransformFunction> functionBinder = MapBinder.newMapBinder(binder(), String.class, TransformFunction.class);
-        functionBinder.addBinding("leet").to(LeetFunction.class);
-        bind(FunctionRegistry.class).asEagerSingleton();
+    public static class FunctionException extends Exception {
+
+        public FunctionException(String label) {
+            super(String.format("Function '%s' failed!", label));
+        }
     }
-
 }

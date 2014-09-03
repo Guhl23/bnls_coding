@@ -15,36 +15,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ch.bnc.coding.menu;
-
-import ch.bnc.coding.transformfunctions.FunctionRegistry;
-import com.google.inject.Inject;
+package ch.bnc.coding.functions;
 
 /**
  *
  * @author Luca Neukom <luca.neukom@gmail.com>
  */
-class TransformMenuPoint implements MenuPoint {
-    private final FunctionRegistry functionRegistry;
-    
-    @Inject
-    public TransformMenuPoint(FunctionRegistry functionRegistry) {
-        this.functionRegistry = functionRegistry;
-    }
+import com.google.inject.AbstractModule;
+import com.google.inject.multibindings.MapBinder;
+public class FunctionModule extends AbstractModule {
 
     @Override
-    public String run(String... arguments) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getLabel() {
-        return "Transform";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Transformiere einen String";
+    protected void configure() {
+        MapBinder<String, TransformFunction> functionBinder = MapBinder.newMapBinder(binder(), String.class, TransformFunction.class);
+        functionBinder.addBinding("leet").to(LeetFunction.class);
+        bind(FunctionRegistry.class).asEagerSingleton();
     }
 
 }
