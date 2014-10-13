@@ -4,3 +4,9 @@
 /libraries/nblibraries.properties
 build.xml
 manifest.mf
+
+
+/bin/
+.classpath
+
+.project

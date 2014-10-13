@@ -56,7 +56,7 @@ public class BNLS {
 
     private static void readCommand() {
         System.out.println();
-        System.out.println("ID des gewÃ¼nschten MenÃ¼punkt: ");
+        System.out.println("ID des gewünschten Menüpunkt: ");
         Scanner in = new Scanner(System.in);
         String line = in.nextLine();
         List<String> commandWithArguments = COMMAND_SPLITTER.splitToList(line);
