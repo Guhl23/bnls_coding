@@ -1,0 +1,6 @@
+<ch.bnc.coding.guice.Modules>
+  <modules>
+    <ch.bnc.coding.guice.FunctionModule/>
+    <ch.bnc.coding.guice.MenuPointModule/>
+  </modules>
+</ch.bnc.coding.guice.Modules>
